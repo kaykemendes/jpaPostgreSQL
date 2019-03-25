@@ -25,4 +25,3 @@ class Person(
         val gender: String?
 
 ) { constructor() : this(null, null, null, null) {} }
-
