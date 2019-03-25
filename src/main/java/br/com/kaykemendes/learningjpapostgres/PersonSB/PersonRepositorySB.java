@@ -1,4 +1,4 @@
-package br.com.kaykemendes.learningjpapostgres.Person;
+package br.com.kaykemendes.learningjpapostgres.PersonSB;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
@@ -8,12 +8,12 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 @Repository
-public interface PersonRepository extends JpaRepository<Person, Long> {
+public interface PersonRepositorySB extends JpaRepository<PersonSB, Long> {
 
     @Transactional(propagation = Propagation.REQUIRES_NEW)
     @Modifying
     @Query(value = "UPDATE person SET name = ?1, age = ?2, gender = ?3 WHERE id = ?4", nativeQuery = true)
     void update(String name, int age, String gender, Long id);
 
-    Person findByName(String name);
+    PersonSB findByName(String name);
 }

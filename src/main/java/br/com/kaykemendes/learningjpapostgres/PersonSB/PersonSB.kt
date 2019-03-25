@@ -1,11 +1,11 @@
-package br.com.kaykemendes.learningjpapostgres.Person
+package br.com.kaykemendes.learningjpapostgres.PersonSB
 
 import javax.persistence.*
 import javax.validation.constraints.NotNull
 
 @Entity
 @Table(name = "person")
-class Person(
+class PersonSB(
 
         @Id
         @GeneratedValue(strategy = GenerationType.IDENTITY)
