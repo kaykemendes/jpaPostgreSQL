@@ -1,11 +1,14 @@
 package br.com.kaykemendes.learningjpapostgres.PersonSB;
 
 import br.com.kaykemendes.learningjpapostgres.Utils.Constants;
+import br.com.kaykemendes.learningjpapostgres.Utils.GenericResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.validation.Valid;
 import javax.websocket.server.PathParam;
+import java.io.IOException;
 import java.util.List;
 import java.util.Optional;
 
@@ -26,14 +29,24 @@ public class PersonControllerSB {
         return personServiceSB.findByName(name);
     }
 
+    @GetMapping("/generic")
+    public GenericResponse findAllGeneric(){
+        return personServiceSB.findAllGeneric();
+    }
+
     @GetMapping(Constants.PATH_PARAM_ID)
-    public Optional<PersonSB> findById(@PathVariable("id") Long id) {
+    public PersonSB findById(@PathVariable("id") Long id) {
         return personServiceSB.findById(id);
     }
 
     @PostMapping
     public PersonSB save(@Valid @RequestBody PersonSB personSB){
         return personServiceSB.save(personSB);
+    }
+
+    @PostMapping("/import")
+    public void saveByImport(@RequestParam("file") MultipartFile file) throws IOException {
+        personServiceSB.saveByImport(file);
     }
 
     @PutMapping(Constants.PATH_PARAM_ID)
