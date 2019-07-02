@@ -1,4 +1,4 @@
-package br.com.kaykemendes.learningjpapostgres.PersonSB;
+package br.com.kaykemendes.learningjpapostgres.Person;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;

@@ -1,8 +1,10 @@
-package br.com.kaykemendes.learningjpapostgres.PersonSB;
+package br.com.kaykemendes.learningjpapostgres.Person;
 
 import br.com.kaykemendes.learningjpapostgres.Utils.GenericResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -27,6 +29,10 @@ public class PersonServiceSB {
 
     public GenericResponse findAllGeneric(){
         return new GenericResponse(HttpStatus.OK, personRepositorySB.findAll());
+    }
+
+    public Page<PersonSB> findPaged(Pageable pageable) {
+        return personRepositorySB.findAll(pageable);
     }
 
     public PersonSB findById(Long id) {

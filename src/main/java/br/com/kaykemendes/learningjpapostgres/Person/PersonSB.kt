@@ -1,4 +1,4 @@
-package br.com.kaykemendes.learningjpapostgres.PersonSB
+package br.com.kaykemendes.learningjpapostgres.Person
 
 import javax.persistence.*
 import javax.validation.constraints.NotNull
